@@ -9,11 +9,15 @@ This simple script can be used to convert pdf files to images. This task can eas
 require 'RMagick'
 
 #Get desired file from the pdfs directory
-pdfPost = Magick::ImageList.new("pdfs/story.pdf") { 
+pdfPost = Magick::ImageList.new("pdfs/story.pdf") 
+
+#Optional bracket. Ups conversion time. Helps quality.
+{ 
   self.quality = 100
   self.density = 144
-} #Optional bracket. Ups conversion time. Helps quality.
+} 
 
+#Prints each converted page to the image directory
 pdfPost.each_with_index do |img, i|
   img.write "images/#{i}_pdf_page.jpg"
 end
