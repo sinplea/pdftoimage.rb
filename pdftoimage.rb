@@ -1,10 +1,11 @@
 require 'RMagick'
 
-pdf = Magick::ImageList.new("pdfs/story.pdf") {
+#Get desired file from the pdfs directory
+pdfPost = Magick::ImageList.new("pdfs/story.pdf") { 
   self.quality = 100
   self.density = 144
-}
+} #Optional bracket. Ups conversion time. Helps quality.
 
-pdf.each_with_index do |page_img, i|
-  page_img.write "images/#{i}_pdf_page.jpg"
+pdfPost.each_with_index do |img, i|
+  img.write "images/#{i}_pdf_page.jpg"
 end
